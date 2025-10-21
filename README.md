@@ -285,7 +285,7 @@ Convenience overload with defaults:
 ```swift
 let updatedPDF = try await actions.addWatermark(with: "CONFIDENTIAL")
 ```
-Parameters:
+**Parameters:**
 - text: `String` — watermark text.
 - pages: `[Int]` — 1-based page indices.
 - fontSize: `Int` — font size.
