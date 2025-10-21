@@ -18,8 +18,6 @@ Public entry point for presenting the H3S PDF UI in SwiftUI or UIKit, with licen
 - Built-in licensing validation using an embedded public key PEM (`h3s-pdf-ui-sdk.pem`).
 - Optional logging with configurable subsystem and level.
 
-> Note: This README reflects the public surface summarized by the package and prior usage notes. If any type names differ in your binary, please share the symbol list and we will align the documentation precisely.
-
 ## Requirements
 
 - iOS 16.0+ / iPadOS 16.0+
@@ -303,7 +301,7 @@ Parameters:
 
 These types are provided by h3s_pdf / h3s_pdf_ui.
 
-### Notes
+> **Notes:**
 - Methods are async and may throw; handle errors accordingly.
 - Some features may be restricted by your license.
 - The SDK uses an internal logger and license verifier.
