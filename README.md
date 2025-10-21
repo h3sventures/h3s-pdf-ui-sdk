@@ -51,6 +51,7 @@ Your `Package.swift` might look like:
         ]
     )
 ])
+```
 
 ## Initialization
 
@@ -64,11 +65,10 @@ let sdk = H3SPDFUISDK(
     logSubsystem: nil // or your bundle identifier
 )
 ```
-
-- **licenseKey**: Your H3S license key string.
-- **config**: `H3SPDFUIConfig` controlling visible features and UI behavior. Defaults to .default.
-- **logLevel**: Internal logging level. Defaults to .none.
-- **logSubsystem**: Optional custom log subsystem (e.g., your bundle ID). Defaults to the SDK’s subsystem.
+- licenseKey: `String` Your H3S license key string.
+- config: `H3SPDFUIConfig` controlling visible features and UI behavior. Defaults to .default.
+- logLevel: `LogLevel` logging level. Defaults to `.none`.
+- logSubsystem: `String` Optional custom log subsystem (e.g., your bundle ID). Defaults to the SDK’s subsystem.
 
 ## Presenting the UI
 
@@ -109,9 +109,8 @@ struct PDFHostView: View {
     }
 }
 ```
-
-- **placement**: `PDFActionButtonPlacement` for fixed action buttons (.top or .bottom). Defaults to .top.
-- **content**: Closure receives `PDFActionsProtocol` for triggering actions. Return your overlay content.
+- placement: `PDFActionButtonPlacement` for fixed action buttons (.top or .bottom). Defaults to .top.
+- content: Closure receives `PDFActionsProtocol` for triggering actions. Return your overlay content.
 
 ### UIKit
 
@@ -124,7 +123,7 @@ func presentPDF(from presentingVC: UIViewController) async {
     presentingVC.present(vc, animated: true)
 }
 ```
-- **placement**: .top or .bottom. Defaults to .top.
+- placement: `.top` or `.bottom`. Defaults to `.top`.
 
 ### Button Placement
 
@@ -138,14 +137,14 @@ func presentPDF(from presentingVC: UIViewController) async {
 `H3SDraggableViewConfig` configures the draggable overlay used to position signature placeholders.
 
 **Properties:**
-- **position**: `CGPoint` — starting position in the PDF view’s coordinate space.
-- **overlaySize**: `CGSize` — overlay rectangle size.
-- **cornerRadius**: `CGFloat` — overlay corner radius.
-- **backgroundColor**: `Color` — overlay background color.
-- **text**: `String` — label text inside the overlay.
-- **font**: `Font` — label font.
-- **textColor**: `Color` — label text color.
-- **textPadding**: `CGFloat` — padding around the label text.
+- position: `CGPoint` — starting position in the PDF view’s coordinate space.
+- overlaySize: `CGSize` — overlay rectangle size.
+- cornerRadius: `CGFloat` — overlay corner radius.
+- backgroundColor: `Color` — overlay background color.
+- text: `String` — label text inside the overlay.
+- font: `Font` — label font.
+- textColor: `Color` — label text color.
+- textPadding: `CGFloat` — padding around the label text.
 
 Default configuration:
 
@@ -173,18 +172,18 @@ let customDraggable = H3SDraggableViewConfig(
 `H3SPDFUIConfig` controls available features and UI affordances. Some features may be hidden depending on your license.
 
 **Key properties:**
-- showDragAndDropSignPosition: Bool — enable drag-and-drop sign positioning.
-- draggableViewConfig: H3SDraggableViewConfig — draggable overlay configuration.
-- hideDragAndDropOnSuccess: Bool — hide the draggable overlay after success.
-- showToolbarWithAction: Bool — show toolbar with actions.
-- showFloatingActionButtons: Bool — enable draggable FABs.
-- showFixedActionButtons: Bool — show fixed action buttons at the chosen placement.
-- showShareAction: Bool — show share action button.
-- showSignPlaceholderButton: Bool — show Sign Placeholder action.
-- showWatermarkButton: Bool — show Watermark action.
-- showWetSignButton: Bool — show Wet Sign action.
-- showReloadPDFButton: Bool — show Reload PDF action.
-- showSignAnnotationButton: Bool — show Sign Annotation action.
+- showDragAndDropSignPosition: `Bool` — enable drag-and-drop sign positioning.
+- draggableViewConfig: `H3SDraggableViewConfig` — draggable overlay configuration.
+- hideDragAndDropOnSuccess: `Bool` — hide the draggable overlay after success.
+- showToolbarWithAction: `Bool` — show toolbar with actions.
+- showFloatingActionButtons: `Bool` — enable draggable FABs.
+- showFixedActionButtons: `Bool` — show fixed action buttons at the chosen placement.
+- showShareAction: Bool` — show share action button.
+- showSignPlaceholderButton: `Bool` — show Sign Placeholder action.
+- showWatermarkButton: `Bool` — show Watermark action.
+- showWetSignButton: `Bool` — show Wet Sign action.
+- showReloadPDFButton: `Bool` — show Reload PDF action.
+- showSignAnnotationButton: `Bool` — show Sign Annotation action.
 
 Defaults:
 ```swift
@@ -227,12 +226,12 @@ Convenience overload with defaults:
 ```swift
 let updatedPDF = try await actions.addSignaturePlaceholder()
 ```
-Parameters:
-- location: PDFObjectLocation — where to place the placeholder.
-- placeholderLength: Int — reserved byte length for signature container.
-- signatureBoxSize: PDFSize — visual size of the signature box.
-- signatureImage: PDFImage? — optional image to display in the box.
-- additionalInfo: [PDFAdditionalInfo] — extra metadata to embed.
+**Parameters:**
+- location: `PDFObjectLocation` — where to place the placeholder.
+- placeholderLength: `Int` — reserved byte length for signature container.
+- signatureBoxSize: `PDFSize` — visual size of the signature box.
+- signatureImage: `PDFImage?` — optional image to display in the box.
+- additionalInfo: `[PDFAdditionalInfo]` — extra metadata to embed.
 
 ### 2) Add Wet (Drawn) Signature
 
@@ -289,30 +288,31 @@ Convenience overload with defaults:
 let updatedPDF = try await actions.addWatermark(with: "CONFIDENTIAL")
 ```
 Parameters:
-- text: String — watermark text.
-- pages: [Int] — 1-based page indices.
-- fontSize: Int — font size.
-- color: PDFColor — text color.
+- text: `String` — watermark text.
+- pages: `[Int]` — 1-based page indices.
+- fontSize: `Int` — font size.
+- color: `PDFColor` — text color.
 
 ## Types Referenced
 
-- PDFObjectLocation: Describes page and position for placements.
-- PDFSize: Width/height for boxes and overlays.
-- PDFImage: Image wrapper for PDF embedding.
-- PDFAdditionalInfo: Key-value metadata for placeholders.
-- PDFColor: Color type used by the PDF engine.
+- `PDFObjectLocation`: Describes page and position for placements.
+- `PDFSize`: Width/height for boxes and overlays.
+- `PDFImage`: Image wrapper for PDF embedding.
+- `PDFAdditionalInfo`: Key-value metadata for placeholders.
+- `PDFColor`: Color type used by the PDF engine.
 
 These types are provided by h3s_pdf / h3s_pdf_ui.
 
 ### Notes
 - Methods are async and may throw; handle errors accordingly.
 - Some features may be restricted by your license.
-- The SDK uses an internal logger and license verifier. Ensure the PEM public key resource is available in the framework bundle.
+- The SDK uses an internal logger and license verifier.
 
 ### Example: Full Setup
 
 ```swift
 import SwiftUI
+import h3s_pdf_ui_sdk
 
 @MainActor
 final class PDFDemoViewModel: ObservableObject {
