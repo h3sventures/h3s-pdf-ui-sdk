@@ -199,7 +199,7 @@ let config = H3SPDFUIConfig.default.with {
 }
 ```
 
-Note: The .with mutating helper is just illustrative. If you don’t have such a helper, mutate a var copy directly.
+> Note: The .with mutating helper is just illustrative. If you don’t have such a helper, mutate a var copy directly.
 
 ## PDF Actions
 
@@ -302,9 +302,9 @@ Parameters:
 These types are provided by h3s_pdf / h3s_pdf_ui.
 
 > **Notes:**
-- Methods are async and may throw; handle errors accordingly.
-- Some features may be restricted by your license.
-- The SDK uses an internal logger and license verifier.
+> - Methods are async and may throw; handle errors accordingly.
+> - Some features may be restricted by your license.
+> - The SDK uses an internal logger and license verifier.
 
 ### Example: Full Setup
 
